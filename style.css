@@ -1,0 +1,347 @@
+:root {
+  --color-primary: #333;
+  --color-secondary: #f5f5f5;
+  --color-accent: #0077cc;
+}
+
+
+/* Style général */
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fafafa;
+  color: #333;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+}
+
+.section-title {
+  font-size: 2em;
+  margin-bottom: 1.5em;
+  text-align: center;
+  color: #222;
+}
+
+
+/* Header */
+header {
+  background-color: #333;
+  color: white;
+  padding: 1em;
+}
+
+/* Conteneur global du header */
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1em;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Section Hero */
+.hero {
+  background-color: #f5f5f5;
+  text-align: center;
+  padding: 4em 1em;
+}
+
+.hero .container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+
+.hero h2 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 1.5em;
+  color: #555;
+}
+
+.btn {
+  background-color: #333;
+  color: white;
+  padding: 0.8em 1.5em;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #555;
+}
+
+/* Section Services */
+#services {
+  background-color: #fff;
+  padding: 4em 1em;
+  text-align: center;
+}
+
+#services h2 {
+  font-size: 2em;
+  margin-bottom: 2em;
+}
+
+.services-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+  flex-wrap: wrap;
+}
+
+.service {
+  flex: 1;
+  min-width: 200px;
+  background-color: #f5f5f5;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.service h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.service p {
+  color: #555;
+}
+
+/* Section Contact */
+#contact {
+  background-color: #f5f5f5;
+  padding: 4em 1em;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  font-family: inherit;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form button {
+  background-color: var(--color-accent);
+  color: white;
+  padding: 0.8em 1.5em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #005fa3;
+}
+
+.container {
+  padding: 0 1em;
+max-width: 1000px;
+}
+
+.service {
+  text-align: center;
+}
+
+.contact-form {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  header .container,
+  .hero .container,
+  #services .container,
+  #contact .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  .services-list {
+    flex-direction: column;
+  }
+
+  .contact-form {
+    width: 100%;
+    padding: 0 1em;
+  }
+
+  .contact-form button {
+    align-self: center;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.service {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Dark mode */
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.dark-mode .hero p,
+body.dark-mode .service p,
+body.dark-mode .service h3,
+body.dark-mode .section-title {
+  color: #f0f0f0;
+}
+
+body.dark-mode .hero h2 {
+  color: #ffffff;
+}
+
+body.dark-mode .btn,
+body.dark-mode .contact-form button {
+  background-color: var(--color-accent);
+  color: white;
+  font-weight: 600;
+}
+
+body.dark-mode header {
+  background-color: #121212;
+}
+
+body.dark-mode nav a {
+  color: #f0f0f0;
+}
+
+body.dark-mode .hero,
+body.dark-mode #services,
+body.dark-mode #contact {
+  background-color: #2a2a2a;
+}
+
+body.dark-mode .service,
+body.dark-mode .contact-form input,
+body.dark-mode .contact-form textarea {
+  background-color: #3a3a3a;
+  color: #f0f0f0;
+  border-color: #555;
+}
+
+body.dark-mode .btn,
+body.dark-mode .contact-form button {
+  background-color: #0077cc;
+  color: white;
+}
+
+body.dark-mode .btn:hover,
+body.dark-mode .contact-form button:hover {
+  background-color: #005fa3;
+}
+.hero-img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 2em;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.service-icon {
+  width: 60px;
+  height: auto;
+  margin-bottom: 1em;
+}
+footer {
+  background-color: #333;
+  color: white;
+  padding: 2em 1em;
+  text-align: center;
+  margin-top: 4em;
+}
+
+footer .container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.footer-links {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 1.5em;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+.footer-logo {
+  width: 32px;
+  height: auto;
+  margin-bottom: 1em;
+}

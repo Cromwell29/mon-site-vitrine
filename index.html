@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mon Site Vitrine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+ <!-- Favicon de base -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+  <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon">
+
+<!-- Icône Apple / Android -->
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="icons/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="icons/android-chrome-512x512.png">
+</head>
+<body>
+<header>
+<div class="container">
+  <h1>Mon Nom / Logo</h1>
+  <nav>
+    <ul>
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+<button id="toggle-dark" class="btn" style="margin-top: 1em;">Mode sombre</button>
+</header>
+
+<section id="accueil" class="hero">
+  <div class="container">
+  <img src="img/hero-image.jpg" alt="Image d'accueil" class="hero-img" />
+    <h2 class="section-title">Bienvenue sur mon site</h2>
+    <p>Je suis développeur web débutant et voici mon portfolio !</p>
+    <a href="#contact" class="btn">Me contacter</a>
+  </div>
+</section>
+
+<section id="services" class="fade-in">
+  <div class="container">
+   <h2 class="section-title">Mes services</h2>
+    <div class="services-list">
+      <div class="service">
+	    <img src="img/icon-design.png" alt="Icône design" class="service-icon" />
+        <h3>Design Web</h3>
+        <p>Création d’interfaces modernes, claires et responsives.</p>
+      </div>
+      <div class="service">
+	    <img src="img/icon-dev.png" alt="Icône Developpement" class="service-icon">
+        <h3>Développement</h3>
+        <p>Sites vitrines simples ou projets plus dynamiques.</p>
+      </div>
+      <div class="service">
+	    <img src="img/icon-cons.png" alt="Icône Conseil" class="service-icon">
+        <h3>Conseil</h3>
+        <p>Accompagnement dans la structure et l’identité du site.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="fade-in">
+  <div class="container">
+    <h2 class="section-title">Contactez-moi</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Votre nom" required />
+      <input type="email" placeholder="Votre e-mail" required />
+      <textarea placeholder="Votre message" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+</section>
+
+<!-- Ton contenu HTML ici -->
+
+<script>
+ document.addEventListener("DOMContentLoaded", () => {
+  const faders = document.querySelectorAll('.fade-in');
+
+  const appearOptions = {
+    threshold: 0.1,
+  };
+
+  const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+ });
+</script>
+<script>
+  document.getElementById('toggle-dark').addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+  });
+</script>
+<footer>
+  <div class="container">
+  <img src="icons/favicon-32x32.png" alt="Logo" class="footer-logo" />
+    <p>© 2025 MonNom. Tous droits réservés.</p>
+    <div class="footer-links">
+      <a href="mailto:contact@monsite.fr">Email</a>
+      <a href="https://github.com/tonprofil" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/tonprofil" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+
