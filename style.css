@@ -15,6 +15,7 @@ body {
   padding: 0;
   background-color: #fafafa;
   color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3 {
@@ -29,6 +30,11 @@ h1, h2, h3 {
   text-align: center;
   color: #222;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 
 /* ----------------------------
    UTILITAIRES
@@ -73,6 +79,10 @@ nav ul {
 nav a {
   color: white;
   text-decoration: none;
+}
+
+header, .btn, .project-card, .footer {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ----------------------------
@@ -122,6 +132,36 @@ nav a {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
+
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 99;
+  font-size: 1.5em;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5em;
+  padding: 0.8em;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#scrollTopBtn:hover {
+  background-color: #005fa3;
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn.disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
 /* ----------------------------
    SECTION SERVICES
 ---------------------------- */
@@ -202,6 +242,14 @@ nav a {
   min-width: 250px;
   max-width: 300px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.project-card.visible {
+  opacity: 1;
+  transform: none;
 }
 
 .project-card:hover {
@@ -212,8 +260,9 @@ nav a {
 .project-img {
   width: 100%;
   height: auto;
-  border-radius: 5px;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 .project-tags {
   display: flex;
@@ -233,6 +282,70 @@ nav a {
 }
 .project-card .btn:hover {
   transform: scale(1.05);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1em;
+  margin-top: 2em;
+}
+
+.gallery img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ----------------------------
+   FONTION LIGHTBOX
+---------------------------- */
+
+/* Style pour la lightbox */
+.lightbox img {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.lightbox img:hover {
+  transform: scale(1.05);
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox-content img {
+  max-width: 90%;
+  max-height: 80%;
+}
+
+.close-lightbox {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
 }
 
 /* ----------------------------
@@ -431,4 +544,16 @@ body.dark-mode .project-card {
 body.dark-mode .project-tags span {
   background-color: #444;
   color: #f0f0f0;
+}
+body.dark-mode .gallery img {
+  box-shadow: 0 5px 15px rgba(255,255,255,0.05);
+}
+
+body.dark-mode #scrollTopBtn {
+  background-color: #444;
+}
+
+/* Style pour la lightbox en mode sombre */
+body.dark-mode .lightbox img {
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
 }
