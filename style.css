@@ -2,13 +2,24 @@
   --color-primary: #e57373; /* rouge cerise doux */
   --color-secondary: #ffeef2; /* fond rosé clair */
   --color-accent: #c2185b; /* framboise profonde */
+  --color-hover:  #a2124d; /* framboise sombre */
   --text-dark: #333;
   --text-light: #fff;
   --bg-white: #fff;
   --color-dark-bg: #2f2a2e; /* sakura dark background */
 }
-* {
-  transition: background-color 0.3s ease, color 0.3s ease;
+/*---------------------------
+    Transition 
+---------------------*/
+
+header,
+footer,
+.section,
+.project-card,
+.service,
+.contact-form input,
+.contact-form textarea {
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* ----------------------------
@@ -39,6 +50,38 @@ html {
   scroll-behavior: smooth;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 1.8em;
+  font-weight: bold;
+  color: var(--text-light);
+  text-decoration: none;
+  animation: logoFadeInZoom 0.8s ease-out;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  display: inline-block;
+}
+
+.logo span {
+  font-family: 'Georgia', serif;
+  color: var(--text-light);
+}
+
+@keyframes logoFadeInZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 
 /* ----------------------------
    UTILITAIRES
@@ -83,6 +126,23 @@ nav ul {
 nav a {
   color: var(--text-light);
   text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 header, .btn, .project-card, .footer {
@@ -498,8 +558,13 @@ footer p {
 body.dark-mode {
   background-color: var(--color-dark-bg);
   color: #ffeef2;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  animation: fadeIn 0.5s ease;
 }
-
+@keyframes fadeIn {
+  from { opacity: 0.7; }
+  to   { opacity: 1; }
+}
 /* Header + Navigation */
 body.dark-mode header {
   background-color: #c2185b; /* framboise foncée */
@@ -579,5 +644,12 @@ body.dark-mode .lightbox img {
 /* Footer */
 body.dark-mode footer {
   background-color: #c2185b;
+  color: #ffeef2;
+}
+
+body.dark-mode .logo {
+  color: #ffeef2;
+}
+body.dark-mode .logo span {
   color: #ffeef2;
 }
